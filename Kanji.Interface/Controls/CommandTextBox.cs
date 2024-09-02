@@ -14,7 +14,7 @@ using Kanji.Interface.Helpers;
 
 namespace Kanji.Interface.Controls
 {
-    public class CommandTextBox : TextBox
+    class CommandTextBox : TextBox
     {
         #region Constants
 
@@ -22,9 +22,9 @@ namespace Kanji.Interface.Controls
         /// Defines the keys that cause validation when pressed
         /// and control has focus.
         /// </summary>
-        private static readonly Key[] ValidationKeys = new Key[]
+        private static readonly Avalonia.Input.Key[] ValidationKeys = new Avalonia.Input.Key[]
         {
-            Key.Enter
+            Avalonia.Input.Key.Enter
         };
 
         #endregion
@@ -152,7 +152,7 @@ namespace Kanji.Interface.Controls
         /// Overrides the KeyUp event handler to attempt to validate the input
         /// when a validation key is pressed.
         /// </summary>
-        protected override void OnKeyUp(KeyEventArgs e)
+        protected override void OnKeyUp(Avalonia.Input.KeyEventArgs e)
         {
             if (ValidationKeys.Contains(e.Key))
             {
@@ -168,7 +168,7 @@ namespace Kanji.Interface.Controls
         /// </summary>
         protected override void OnPointerReleased(PointerReleasedEventArgs e)
         {
-            if (e.InitialPressMouseButton == MouseButton.Middle)
+            if (e.InitialPressMouseButton == Avalonia.Input.MouseButton.Middle)
             {
                 this.Text = string.Empty;
                 ValidateInput();
